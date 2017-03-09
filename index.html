@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic-Game</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script>
+	var letters = ["a", "e", "i", "o", "u"];
+	var turns = 5;
+	var computerGuess = letters[[Math.floor(Math.random()*letters.length)]];
+	var wins = 0;
+	var losses = 0;
+	var restart;
+	
+function startGame(){
+	document.onkeyup = function (event){
+		var userGuess = event.key;
+	
+		if(userGuess.toLowerCase() === computerGuess){
+			alert(" we guessed the same letter! - " + computerGuess);
+			document.getElementById("myText").value = "1";
+			wins++; 
+
+			}
+
+		else{
+				alert("Nope. Try again");
+				// ("nope. I guessed " + computerGuess + " but you guessed " + userGuess);
+				document.getElementById("guesses").value = "5";
+				losses++;
+			}
+
+			if(userGuess.toLowerCase() != computerGuess){
+			alert("You have 4 guesses left" );
+			// document.getElementById("left").value = "4";
+			losses++;
+			}
+
+}
+
+		
+			
+		var html = "<p>Press a, e, i, o, u to start playing!</p>" +
+          
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>";
+
+          document.querySelector("#game").innerHTML = html;
+
+
+		}
+
+function checkForWin(){
+	if(userGuess.toLowerCase() === computerGuess){
+		alert("we guessed the same letter " + restart);
+		prompt ("Start again");
+	}
+}
+
+		startGame();
+		checkForWin();
+	</script>
+</head>
+<body>
+<div id="container">
+	<h1>The Psychic Game</h1>
+	<header>Guess what vowel I am thinking of</header>
+	<div id="game">
+	<p>To start the game press a, e, i, o, u</p>
+	</div>
+	<p id="wins">Wins:</p>
+	<input type="text" id="myText" value="0">
+	<p id="losses">Losses:</p>
+	<input type="text" id="lose" value="0">
+	<p id="left">Guess left:</p>
+	<input type="text" id="left" value="0">
+	<p id="used">Your Guesses so far:</p>
+	<input type="text" id="guesses" value="5">
+</div>
+		
+
+	<!-- <script type="text/javascript" src="game.js"></script> -->
+</body>
+</html>
